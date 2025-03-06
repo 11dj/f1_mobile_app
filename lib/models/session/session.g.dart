@@ -1,39 +1,43 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'meeting.dart';
+part of 'session.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$MeetingImpl _$$MeetingImplFromJson(Map<String, dynamic> json) =>
-    _$MeetingImpl(
+_$SessionImpl _$$SessionImplFromJson(Map<String, dynamic> json) =>
+    _$SessionImpl(
       circuitKey: (json['circuit_key'] as num).toInt(),
       circuitShortName: json['circuit_short_name'] as String,
       countryCode: json['country_code'] as String,
       countryKey: (json['country_key'] as num).toInt(),
       countryName: json['country_name'] as String,
-      dateStart: json['date_start'] as String,
-      gmtOffset: json['gmt_offset'] as String,
+      dateEnd: DateTime.parse(json['date_end'] as String),
+      dateStart: DateTime.parse(json['date_start'] as String),
+      gmtOffset: Duration(microseconds: (json['gmt_offset'] as num).toInt()),
       location: json['location'] as String,
       meetingKey: (json['meeting_key'] as num).toInt(),
-      meetingName: json['meeting_name'] as String,
-      meetingOfficialName: json['meeting_official_name'] as String,
+      sessionKey: (json['session_key'] as num).toInt(),
+      sessionName: json['session_name'] as String,
+      sessionType: json['session_type'] as String,
       year: (json['year'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$MeetingImplToJson(_$MeetingImpl instance) =>
+Map<String, dynamic> _$$SessionImplToJson(_$SessionImpl instance) =>
     <String, dynamic>{
       'circuit_key': instance.circuitKey,
       'circuit_short_name': instance.circuitShortName,
       'country_code': instance.countryCode,
       'country_key': instance.countryKey,
       'country_name': instance.countryName,
-      'date_start': instance.dateStart,
-      'gmt_offset': instance.gmtOffset,
+      'date_end': instance.dateEnd.toIso8601String(),
+      'date_start': instance.dateStart.toIso8601String(),
+      'gmt_offset': instance.gmtOffset.inMicroseconds,
       'location': instance.location,
       'meeting_key': instance.meetingKey,
-      'meeting_name': instance.meetingName,
-      'meeting_official_name': instance.meetingOfficialName,
+      'session_key': instance.sessionKey,
+      'session_name': instance.sessionName,
+      'session_type': instance.sessionType,
       'year': instance.year,
     };

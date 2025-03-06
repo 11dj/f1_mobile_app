@@ -4,24 +4,24 @@ part 'meeting.freezed.dart';
 part 'meeting.g.dart';
 
 @freezed
-@JsonSerializable(
-  explicitToJson: true,
-  fieldRename: FieldRename.snake,
-)
 class Meeting with _$Meeting {
+  @JsonSerializable(
+    explicitToJson: true,
+    fieldRename: FieldRename.snake,
+  )
   const factory Meeting({
-    int? circuitKey,
-    String? circuitShortName,
-    String? countryCode,
-    int? countryKey,
-    String? countryName,
-    String? dateStart,
-    String? gmtOffset,
-    String? location,
-    int? meetingKey,
-    String? meetingName,
-    String? meetingOfficialName,
-    int? year,
+    required int circuitKey,
+    required String circuitShortName,
+    required String countryCode,
+    required int countryKey,
+    required String countryName,
+    required String dateStart,
+    required String gmtOffset,
+    required String location,
+    required int meetingKey,
+    required String meetingName,
+    required String meetingOfficialName,
+    required int year,
   }) = _Meeting;
 
   factory Meeting.fromJson(Map<String, dynamic> json) =>

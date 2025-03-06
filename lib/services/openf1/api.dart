@@ -5,7 +5,7 @@ import 'package:f1_mobile_app/services/services.dart';
 class OpenF1Api {
   OpenF1Api();
   late final Dio _dio = AppDio().initial();
-  static const String baseUrl = 'https://api.openf1.com';
+  static const String baseUrl = 'https://api.openf1.org/v1';
 
   Future<List<T>> _fetchData<T>({
     required Uri uri,
@@ -28,9 +28,27 @@ class OpenF1Api {
     }
   }
 
-  Future<String> getSession(String sessionId) async {
-    final response = await _dio.get('$baseUrl/sessions/$sessionId');
-    return response.data.toString();
+  Future<List<Session>> getSessions({
+    int? meetingKey,
+    String? countryName,
+    String? sessionName,
+    int? year,
+  }) async {
+    final queryParams = <String, dynamic>{
+      if (meetingKey != null) 'meeting_key': meetingKey.toString(),
+      if (countryName != null) 'country_name': countryName,
+      if (sessionName != null) 'session_name': sessionName,
+      if (year != null) 'year': year.toString(),
+    };
+
+    try {
+      Uri uri =
+          Uri.parse('$baseUrl/sessions').replace(queryParameters: queryParams);
+      return _fetchData<Session>(uri: uri, fromJson: Session.fromJson);
+    } catch (e) {
+      //print(e);
+      return [];
+    }
   }
 
   Future<List<Meeting>> getMeetings({
